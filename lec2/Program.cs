@@ -5,7 +5,11 @@
     private int numberOfStudents;
 
     public StudentGroup(string nameOfGroup, int fixedNumberOfStudents)
-    { }
+    { 
+        groupName = nameOfGroup;
+        studentNames = new string[fixedNumberOfStudents];
+        numberOfStudents = 0;
+    }
 
     public string getStudent(int studentIndex)
     { return studentNames[studentIndex]; }
