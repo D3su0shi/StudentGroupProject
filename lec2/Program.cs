@@ -13,9 +13,10 @@
 
     public string getStudent(int studentIndex)
     { return studentNames[studentIndex]; }
-    public void addStudent(string nameOfStu, int fixedNumberOfStudents)
-    { }
-
+    public void addStudent(string nameOfStu, int studentIndex)
+    {
+        studentNames.Inser(studentIndex, nameOfStu);
+    }
     public void displayGroup()
     { }
 
