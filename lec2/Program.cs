@@ -13,9 +13,17 @@
 
     public string getStudent(int studentIndex)
     { return studentNames[studentIndex]; }
-    public void addStudent(string nameOfStu, int studentIndex)
+     public void addStudent(string nameOfStu, int studentIndex)
     {
-        studentNames.Inser(studentIndex, nameOfStu);
+        if (studentIndex >= 0 && studentIndex < studentNames.Length)
+        {
+            studentNames[studentIndex] = nameOfStu;
+            numberOfStudents++;
+        }
+        else
+        {
+            Console.WriteLine("Invalid student index.");
+        }
     }
     public void displayGroup()
     { }
