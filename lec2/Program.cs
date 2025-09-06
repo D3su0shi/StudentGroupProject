@@ -26,7 +26,14 @@
         }
     }
     public void displayGroup()
-    { }
+    { 
+        Console.WriteLine($"Group Name: {groupName}");
+        Console.WriteLine("Students:\n");
+        for (int i = 0; i < numberOfStudents; i++)
+        {
+            Console.WriteLine($"- {studentNames[i]}\n");
+        }
+    }
 
 
  }
