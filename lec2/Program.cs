@@ -1,39 +1,63 @@
-﻿public class StudentGroup
+﻿using System;
+public class StudentGroup
 {
     private string groupName;
     private string[] studentNames;
     private int numberOfStudents;
 
     public StudentGroup(string nameOfGroup, int fixedNumberOfStudents)
-    { 
+    {
         groupName = nameOfGroup;
         studentNames = new string[fixedNumberOfStudents];
         numberOfStudents = 0;
     }
 
     public string getStudent(int studentIndex)
-    { return studentNames[studentIndex]; }
-     public void addStudent(string nameOfStu, int studentIndex)
+    {
+        return (studentIndex >= 0 && studentIndex < studentNames.Length && !string.IsNullOrEmpty(studentNames[studentIndex]))
+                ? studentNames[studentIndex]
+                : "no student here";
+    }
+    public void addStudent(string nameOfStu, int studentIndex)
     {
         if (studentIndex >= 0 && studentIndex < studentNames.Length)
         {
+            if (string.IsNullOrEmpty(studentNames[studentIndex]))
+            {
+                numberOfStudents++;
+            }
             studentNames[studentIndex] = nameOfStu;
-            numberOfStudents++;
         }
         else
         {
-            Console.WriteLine("Invalid student index.");
+            Console.WriteLine("Invalid index");
         }
     }
+
     public void displayGroup()
-    { 
-        Console.WriteLine($"Group Name: {groupName}");
-        Console.WriteLine("Students:\n");
-        for (int i = 0; i < numberOfStudents; i++)
+    {
+        Console.WriteLine($"Group: {groupName}");
+        for (int i = 0; i < studentNames.Length; i++)
         {
-            Console.WriteLine($"- {studentNames[i]}\n");
+            if (!string.IsNullOrEmpty(studentNames[i]))
+            {
+                Console.WriteLine($"{studentNames[i]}");
+            }
         }
     }
+}
 
+public class Program
+{
+    public static void Main()
+    {
+        StudentGroup ss1 = new StudentGroup("the people", 3);
 
- }
+        /*ss1.addStudent("d1", 0);*/
+        ss1.addStudent("d2", 1);
+        ss1.addStudent("d3", 2);
+
+        ss1.displayGroup();
+
+    }
+} 
